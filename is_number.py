@@ -1,14 +1,17 @@
-
-
 def is_number(string) -> bool:
-    no_numbers = 0
+    if len(string) == 1:
+        return string.isdigit()
     for i in range(len(string)):
-        if not(string[i].isdigit()):
-            no_numbers += 1
-    if no_numbers > 0:
-        return False
-    else:
+        c = string[i]
+        if c != "-" and c != "." and c != "e" and not(c.isdigit()):
+            return False
+    if string.count("e") == 1:
         return True
+    if string.count("-") == 1 and string[0] != "-":
+        return False
+    return True
+
+# TODO: ok for example proposed, a deeper more efficient function will require more time
 
 if __name__ == "__main__":
     list = [
@@ -17,7 +20,12 @@ if __name__ == "__main__":
         "10.1",
         "-10.1",
         "1e5",
+        "a",
+        "3-12",
+        "x 1",
+        "a -2",
+        "-",
     ]
 
     for el in list:
-        print(is_number(el))
+        print(el, is_number(el))
