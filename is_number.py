@@ -29,3 +29,7 @@ if __name__ == "__main__":
 
     for el in list:
         print(el, is_number(el))
+
+    s = "string"
+    for i in range(len(s)):
+        print(s[:i] + s[i+1:])
