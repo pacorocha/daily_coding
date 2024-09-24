@@ -1,9 +1,15 @@
 def superDigit(n, k):
-    n_int = [int(char) for char in n] * k
-    super_digit = sum(n_int)
-    if super_digit >= 10:
-        return superDigit(str(super_digit), 1)
-    return super_digit
+    digit_sum = sum(int(char) for char in n)
+
+    total_sum = digit_sum * k
+
+    def compute_super_digit(x):
+        if x < 10:
+            return x
+        else:
+            return compute_super_digit(sum(int(char) for char in str(x)))
+
+    return compute_super_digit(total_sum)
 
 if __name__ == "__main__":
     n="9875"
