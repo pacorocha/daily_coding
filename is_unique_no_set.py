@@ -1,7 +1,8 @@
 def is_unique_no_set(lst):
     for i in range(len(lst)):
-        if lst[i] in lst[i+1:]:
-            return False
+       for j in range(i+1, len(lst)):
+           if lst[i] == lst[j]:
+                return False
     return True
 
 print(is_unique_no_set([1,2,3,4,5]))
